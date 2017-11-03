@@ -593,3 +593,21 @@ Nov 03 16:01:20 +01:00 jcamhi  Bringing up the enp0s3 interface... Nov 03 16:01:
      Starting dhclient on the enp0s3 interface... OK
 Nov 03 16:01:21 +01:00 jcamhi  Starting SSH Server... OK
 --------
+Nov 03 17:29:48 +01:00 (none)  Mounting virtual file systems: /run /proc /sys OK
+Nov 03 17:29:48 +01:00 (none)  Bringing up the loopback interface... OK
+Nov 03 17:29:49 +01:00 (none)  Setting hostname to jcamhi... OK
+Nov 03 17:29:49 +01:00 jcamhi  Populating /dev with device nodes...  OK
+Nov 03 17:29:51 +01:00 jcamhi  Activating all swap files/partitions... OK
+Nov 03 17:29:51 +01:00 jcamhi  Mounting root file system in read-only mode...  OK
+Nov 03 17:29:51 +01:00 jcamhi  Checking file systems... OK
+Nov 03 17:29:51 +01:00 jcamhi  Remounting root file system in read-write mode... OK
+Nov 03 17:29:51 +01:00 jcamhi  Mounting remaining file systems... OK
+Nov 03 17:29:51 +01:00 jcamhi  Cleaning file systems: /tmp OK
+Nov 03 17:29:51 +01:00 jcamhi  Retrying failed uevents, if any... OK
+Nov 03 17:29:52 +01:00 jcamhi  Setting up Linux console... OK
+Nov 03 17:29:52 +01:00 jcamhi  Starting system log daemon... OK
+Nov 03 17:29:52 +01:00 jcamhi  Starting kernel log daemon... OK
+Nov 03 17:29:52 +01:00 jcamhi  Bringing up the enp0s3 interface... Nov 03 17:29:52 +01:00 jcamhi  
+     Starting dhclient on the enp0s3 interface... OK
+Nov 03 17:29:53 +01:00 jcamhi  Starting SSH Server... OK
+--------
