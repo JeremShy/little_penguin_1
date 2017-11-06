@@ -1,0 +1,20 @@
+Subject: [PATCH 1/1] Makefile: Change Kernel Extraversion
+From: Jeremy Camhi: jeremy.camhi@gmail.com
+Recipient: pedago@42.fr
+CC: trivial@kernel.org
+
+This patch changes the extraversion of this kernel from -rc8 to -thor_kernel. It has been motivated by an assignment for the 42 School.
+Signed-off-by: Jeremy Camhi <jcamhi@student.42.fr>
+---
+
+--- Makefile.orig	2017-11-06 14:49:01.878994839 +0100
++++ Makefile	2017-11-06 14:48:41.441995987 +0100
+@@ -2,7 +2,7 @@
+ VERSION = 4
+ PATCHLEVEL = 14
+ SUBLEVEL = 0
+-EXTRAVERSION = -rc8
++EXTRAVERSION = -thor_kernel
+ NAME = Fearless Coyote
+ 
+ # *DOCUMENTATION*
