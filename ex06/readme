@@ -1,0 +1,5 @@
+What is the next tree ?
+
+Le 'next tree' est un arbre de developpement (git://git.kernel.org/pub/scm/linux/kernel/git/next/linux-next.git) contenant
+les patchs qui seront integres a l'arbre principal, il permet aux developpeurs de savoir a l'avance ce qui se prepare pour le 
+kernel pour eviter d'ecrire du code qui ne sera plus fonctionnel quelques temps plus tard..
