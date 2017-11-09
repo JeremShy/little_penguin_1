@@ -14,44 +14,45 @@ MODULE_LICENSE("GPL");
 char login[] = "jcamhi";
 size_t login_size = sizeof(login) - 1;
 
-int my_open(struct inode *inode, struct file *file) {
-	pr_debug("MiscModule: opening");	
-	return (0);
+int my_open(struct inode *inode, struct file *file)
+{
+	pr_debug("MiscModule: opening");
+	return 0;
 }
 
-int my_release(struct inode *inode, struct file *file) {
+int my_release(struct inode *inode, struct file *file)
+{
 	pr_debug("MiscModule: Releasing");
-	return (0);
+	return 0;
 }
 
 
-ssize_t my_read(struct file *_file, char __user *buff, size_t len, loff_t *off) {
+ssize_t my_read(struct file *_file, char __user *buff, size_t len, loff_t *off)
+{
 	char *begin = login + *off;
-	char *end = (begin + len >= login + login_size ? login + login_size : begin + len);
+	char *end = (begin + len >= login + login_size ?
+		     login + login_size : begin + len);
 	int ret;
 
-	if (begin >= login + login_size) {
+	if (begin >= login + login_size)
 		return 0;
-	}
 	ret = copy_to_user(buff, begin, end - begin);
-	if (ret == end - begin) {
+	if (ret == end - begin)
 		return (-EIO);
-	} else { 
-		*off += end - begin - ret;
-		return (end - begin - ret);
-	}
-	pr_debug("MiscModule: Error while reading");
-	return (-1);
+	*off += end - begin - ret;
+	return (end - begin - ret);
 }
 
-ssize_t my_write (struct file *_file, const char __user *buff, size_t len, loff_t *off) {
+ssize_t my_write(struct file *_file, const char __user *buff, size_t len,
+		 loff_t *off)
+{
 	if (len == login_size) {
 		char buffer[login_size];
 		int retval = copy_from_user(buffer, buff, login_size);
-		if (retval != 0) {
+
+		if (retval != 0)
 			return (-EIO);
-		}
-		if (len == login_size && memcmp(buffer, login, login_size) == 0) {
+		if (len == login_size && !memcmp(buffer, login, login_size)) {
 			pr_debug("MiscModule: Good login !\n");
 			return login_size;
 		}
@@ -59,7 +60,7 @@ ssize_t my_write (struct file *_file, const char __user *buff, size_t len, loff_
 	return (-EINVAL);
 }
 
-struct file_operations fops = {
+const struct file_operations fops = {
 	.owner = THIS_MODULE,
 	.read = my_read,
 	.open = my_open,
