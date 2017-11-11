@@ -16,7 +16,8 @@ static int my_release(struct inode *inode, struct file *file)
 }
 
 
-static ssize_t my_read(struct file *_file, char __user *buff, size_t len, loff_t *off)
+static ssize_t my_read(struct file *_file, char __user *buff,
+		       size_t len, loff_t *off)
 {
 	char *begin = login + *off;
 	char *end = (begin + len >= login + login_size ?

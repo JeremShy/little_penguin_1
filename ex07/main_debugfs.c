@@ -20,10 +20,11 @@ int __init _ft_init(void)
 
 	if (!fortytwo) {
 		pr_debug("DebugModule: Error while creating dir fortytwo\n");
-		return (1);
+		return 1;
 	}
 	id = debugfs_create_file("id", 0666, fortytwo, NULL, &fops_id);
-	gifi = debugfs_create_file("jiffies", 0444, fortytwo, NULL, &fops_jiffies);
+	gifi = debugfs_create_file("jiffies", 0444, fortytwo, NULL,
+				   &fops_jiffies);
 	foo = debugfs_create_file("foo", 0644, fortytwo, NULL, &fops_foo);
 	return 0;
 }

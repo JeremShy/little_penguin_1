@@ -13,7 +13,8 @@ static int my_release(struct inode *inode, struct file *file)
 	return 0;
 }
 
-static ssize_t my_read(struct file *_file, char __user *userbuff, size_t len, loff_t *off)
+static ssize_t my_read(struct file *_file, char __user *userbuff,
+		       size_t len, loff_t *off)
 {
 	char buf[255];
 	int ret;

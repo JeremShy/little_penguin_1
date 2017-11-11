@@ -3,7 +3,7 @@
 MODULE_LICENSE("GPL");
 
 char buffer[PAGE_SIZE + 1];
-int	locked = 0;
+int	locked;
 
 static int my_open(struct inode *inode, struct file *file)
 {
@@ -16,7 +16,8 @@ static int my_release(struct inode *inode, struct file *file)
 }
 
 
-static ssize_t my_read(struct file *_file, char __user *userbuff, size_t len, loff_t *off)
+static ssize_t my_read(struct file *_file, char __user *userbuff,
+		       size_t len, loff_t *off)
 {
 	char *begin = buffer + *off;
 	size_t buffer_size = strlen(buffer);
@@ -25,32 +26,30 @@ static ssize_t my_read(struct file *_file, char __user *userbuff, size_t len, lo
 	int ret;
 
 	if (locked)
-		return (-EIO);
+		return -EIO;
 	locked = 1;
-	if (begin >= buffer + buffer_size)
-	{
+	if (begin >= buffer + buffer_size) {
 		locked = 0;
 		return 0;
 	}
 	ret = copy_to_user(userbuff, begin, end - begin);
-	if (ret == end - begin)
-	{
+	if (ret == end - begin) {
 		locked = 0;
-		return (-EIO);
+		return -EIO;
 	}
 	*off += end - begin - ret;
 	locked = 0;
 	return (end - begin - ret);
 }
 
-static ssize_t my_write(struct file *_file, const char __user *userbuff, size_t len,
-		 loff_t *off)
+static ssize_t my_write(struct file *_file,
+			const char __user *userbuff, size_t len, loff_t *off)
 {
 	int ret;
 	ssize_t rret;
 
 	if (locked)
-		return (-EIO);
+		return -EIO;
 	locked = 1;
 	if (len <= PAGE_SIZE) {
 		ret = copy_from_user(buffer, userbuff, len);
@@ -63,8 +62,8 @@ static ssize_t my_write(struct file *_file, const char __user *userbuff, size_t 
 	}
 	locked = 0;
 	if (ret != 0)
-		return (-EIO);
-	return (rret);
+		return -EIO;
+	return rret;
 }
 
 const struct file_operations fops_foo = {
