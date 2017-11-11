@@ -1,0 +1,1 @@
+ACTION=="add", DEVPATH=="/module/debugfs", SUBSYSTEM=="module", RUN+="/root/little_penguin_1/ex07/udev.sh"
