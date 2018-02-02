@@ -1,9 +1,10 @@
-Subject: [PATCH 1/1] Makefile: Change Kernel Extraversion
+Subject: [PATCH 1/1] Makefile : Change Kernel Extraversion
 From: Jeremy Camhi: jeremy.camhi@gmail.com
 Recipient: pedago@42.fr
 CC: trivial@kernel.org
 
-This patch changes the extraversion of this kernel from -rc8 to -thor_kernel. It has been motivated by an assignment for the 42 School.
+This patch changes the extraversion of this kernel from -rc8 to
+-thor_kernel. It has been motivated by an assignment for the 42 School.
 Signed-off-by: Jeremy Camhi <jcamhi@student.42.fr>
 ---
 
