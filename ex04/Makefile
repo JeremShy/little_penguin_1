@@ -8,9 +8,11 @@ modules:
 install:
 	make -C /lib/modules/$(shell uname -r)/build M=$(PWD) modules_install
 
-uninstall:
-	make -C /lib/modules/$(shell uname -r)/build M=$(PWD) modules_uninstall
 clean:
 	make -C /lib/modules/$(shell uname -r)/build M=$(PWD) clean
+
+test: modules install
+	modprobe -r my_driver
+	modprobe my_driver
 
 re: clean all
